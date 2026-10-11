@@ -1,20 +1,13 @@
-<!---
 
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
 
 ## How it works
 
-Explain how your project works
+A wrapper surrounds an 32-bit integer ALU (just an adder/subtractor at the moment) to add functionality for LMUL, LDIV and LIM.
 
 ## How to test
 
-Explain how to use your project
+Pulse ld to read ai and bi into internal 32-bit A and B registers, which are input to the ALU. (this takes at least 32 clock cycles).  Once values are loaded, leave ld inactive, choose and alufunc to test, and use sel to select one byte of the ALU's ouptut on outp.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None
