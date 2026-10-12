@@ -38,9 +38,8 @@ module tt_um_markgarnold_lnsalu (
     assign bi = ui_in[1];
     assign ld = ui_in[2];
     assign sel = ui_in[4:3];
-  
+  /*
     tiny_test tinytestinstance(ai,bi,ld,sel,alu_func,uo_out,clk);
-*/
     //module tiny_test(ai,bi,ld,sel,alu_func,outp,clk);
     
     // All output pins must be assigned. If not used, assign to 0.
