@@ -24,7 +24,7 @@ module ideal_sb(out_sbz, in_z, sb_mode);
      //$readmemh("dirsb_ideal.hex",dirsb);
      //$readmemh("dirsb_lpvip.hex",dirsb);
   always @(in_z or sb_mode)
-     out_sbz = sb_mode ? 0 /*lpvip(in_z)*/ : in_z;
+     out_sbz = sb_mode ? lpvip(in_z) : in_z;
      //out_sbz = sb_mode ? dirsb[in_z] : in_z;
 endmodule
    
