@@ -31,7 +31,7 @@ module tt_um_markgarnold_lnsalu (
     wire [6:0] alufunc;
     wire [7:0] outp;
     
-    assign alufunc = uio_in[6:0];
+    assign alu_func = uio_in[6:0];
     assign ai = ui_in[0];
     assign bi = ui_in[1];
     assign ld = ui_in[2];
