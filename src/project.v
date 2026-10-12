@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-//`include "newtinyalu8.v"
+`include "newtinyalu8.v"
 
 module tt_um_markgarnold_lnsalu (
     input  wire [7:0] ui_in,    // Dedicated inputs
