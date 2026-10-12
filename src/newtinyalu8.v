@@ -82,8 +82,8 @@ module tiny_test(ai,bi,ld,sel,alu_func,outp,clk);
      reg [`N-1:0] outp;
      //newalu alu_instance(alu_out, a, b,
      //                  alu_func[0],alu_func[5],alu_func[6]);//op,lnsmode,sbmode
-   //oldalu alu_instance(alu_out, a, b,alu_func[0]);
-   assign alu_out=a+b;
+   oldalu alu_instance(alu_out, a, b,alu_func[0]);
+   //assign alu_out=a+b;
   `endif
 
 
