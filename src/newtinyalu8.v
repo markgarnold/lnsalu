@@ -24,7 +24,7 @@ module ideal_sb(out_sbz, in_z, sb_mode);
      //$readmemh("dirsb_ideal.hex",dirsb);
      //$readmemh("dirsb_lpvip.hex",dirsb);
   always @(in_z or sb_mode)
-     out_sbz = sb_mode ? lpvip(in_z) : in_z;
+     out_sbz = sb_mode ? 0 /*lpvip(in_z)*/ : in_z;
      //out_sbz = sb_mode ? dirsb[in_z] : in_z;
 endmodule
    
@@ -80,9 +80,9 @@ module tiny_test(ai,bi,ld,sel,alu_func,outp,clk);
      reg [4*`N-1:0] a,b;
      wire [4*`N-1:0] alu_out;
      reg [`N-1:0] outp;
-     //newalu alu_instance(alu_out, a, b,
-     //                  alu_func[0],alu_func[5],alu_func[6]);//op,lnsmode,sbmode
-   oldalu alu_instance(alu_out, a, b,alu_func[0]);
+     newalu alu_instance(alu_out, a, b,
+                       alu_func[0],alu_func[5],alu_func[6]);//op,lnsmode,sbmode
+   //oldalu alu_instance(alu_out, a, b,alu_func[0]);
    //assign alu_out=a+b;
   `endif
 
