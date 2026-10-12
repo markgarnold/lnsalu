@@ -80,8 +80,10 @@ module tiny_test(ai,bi,ld,sel,alu_func,outp,clk);
      reg [4*`N-1:0] a,b;
      wire [4*`N-1:0] alu_out;
      reg [`N-1:0] outp;
-     newalu alu_instance(alu_out, a, b,
-                       alu_func[0],alu_func[5],alu_func[6]);//op,lnsmode,sbmode
+     //newalu alu_instance(alu_out, a, b,
+     //                  alu_func[0],alu_func[5],alu_func[6]);//op,lnsmode,sbmode
+   oldalu alu_instance(alu_out, a, b,alu_func[0]);
+   
   `endif
 
 
