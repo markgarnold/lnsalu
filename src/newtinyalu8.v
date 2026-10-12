@@ -33,7 +33,7 @@ module newaluwrap(r,a,b,rorig,op,lnsmode);
    output [`SIZE-1:0] r;
    input  [`SIZE-1:0] rorig;
    input op,lnsmode;
-   assign correctsign = a[`SIZE-1] ^ b[`SIZE-1];
+   wire correctsign = a[`SIZE-1] ^ b[`SIZE-1];
    wire[1:0] rnewhigh = rorig[`SIZE-1:`SIZE-2] + ((op==0) ? 2'b11 :  2'b01);
    wire overunder = correctsign ^ rnewhigh[1];
    assign r = (lnsmode==0) ? rorig : (overunder==0) ?  {rnewhigh,rorig[`SIZE-3:0]} : 
