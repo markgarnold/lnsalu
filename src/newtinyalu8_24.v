@@ -21,7 +21,7 @@ module ideal_sb(out_sbz, in_z, sb_mode);
   `include "lpvip24.v"
 
   always @(in_z or sb_mode)
-     out_sbz = sb_mode ? lpvip(in_z) : in_z;
+     out_sbz = sb_mode ? /*lpvip(in_z)*/ 0 : in_z;
 endmodule
    
 module newaluwrap(r,a,b,rorig,op,lnsmode);
