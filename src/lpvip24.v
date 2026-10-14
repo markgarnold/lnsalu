@@ -21,7 +21,7 @@
    begin
     if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
     begin
-      lpvip = lpvipsing(z2>>8)<<8;
+      lpvip = 0;//lpvipsing(z2>>8)<<8;
     end
     else
      begin
