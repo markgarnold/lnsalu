@@ -19,11 +19,11 @@
    reg [23:0] z1,z,usedb, precond, postcond, mitch, adjust, oldz;
    reg flipsign;
    begin
-    if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
+    /*if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
     begin
       lpvip = 0;//lpvipsing(z2>>8)<<8;
     end
-    else
+    else*/
      begin
     flipsign = z2[23]&z2[22];
     usedb = z2[23];// & `xlns16_signmask;
