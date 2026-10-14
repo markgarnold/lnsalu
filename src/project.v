@@ -29,7 +29,7 @@ module tt_um_markgarnold_lnsalu (
     wire ai,bi,ld;
     wire [1:0] sel;
     wire [6:0] alu_func;
-    wire [7:0] outp;
+    //wire [7:0] outp;
     
     assign alu_func = uio_in[6:0];
     assign ai = ui_in[0];
@@ -42,7 +42,7 @@ module tt_um_markgarnold_lnsalu (
     //assign outp = ui_in+uio_in;
     // All output pins must be assigned. If not used, assign to 0.
 
-    assign uo_out  = outp;  
+    //assign uo_out  = outp;  
     assign uio_out = 0;
     assign uio_oe  = 0;
     
