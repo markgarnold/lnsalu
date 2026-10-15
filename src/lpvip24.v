@@ -18,6 +18,7 @@
    
    reg [23:0] z1,z, precond, postcond, mitch, adjust, oldz;
     reg usedb;
+    reg [23:0] negz1,negz;
    reg flipsign;
    begin
     /*if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
