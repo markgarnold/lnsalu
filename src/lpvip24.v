@@ -55,7 +55,7 @@
     //$display("postcond=%h",postcond);
     //mitch = ((`xlns16_logmask&(-z)) >= 1<<`xlns16_F)||(usedb==0) ? xlns16_mitch((z+precond)) : 
      //             -xlns16_db_ideal(-z)-z; // use ideal for singularity
-    mitch = xlns16_mitch((z+precond)); 
+    mitch = 0;//xlns16_mitch((z+precond)); 
     //$display("pre=%h post=%h mit=%h",precond,postcond,mitch);
     adjust = usedb ? /*16'hffff&*/(-mitch) : 
             (z==0) ? 1<<`xlns16_F : mitch + postcond;
