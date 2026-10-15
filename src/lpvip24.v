@@ -40,12 +40,12 @@
         z = z1;
       end
     //$display("z=%h old=%h udb=%h ",z,oldz,usedb);
-    precond = 0; /*(usedb==0) ? (
+    precond = (usedb==0) ? (
                             ((24'h7fffff&(-z))>>3)
                            ) :          // -.125*z 
               (z < -(2<<`xlns16_F)) ? 5<<(`xlns16_F-3):        //  0.625
                               (z >> 2) + (9 << (`xlns16_F-3));//  .25*z + 9/8
-*/
+
     //$display("precond=%h",precond);
     postcond = 0; /*((`xlns16_logmask&(-z)) >= (3<<`xlns16_F)) ? 0: 
                 (`xlns16_logmask&(-z)) <= (3<<(`xlns16_F-2)) ? 
@@ -55,7 +55,7 @@
     //$display("postcond=%h",postcond);
     //mitch = ((`xlns16_logmask&(-z)) >= 1<<`xlns16_F)||(usedb==0) ? xlns16_mitch((z+precond)) : 
      //             -xlns16_db_ideal(-z)-z; // use ideal for singularity
-       mitch = xlns16_mitch((z/*+precond*/)); 
+       mitch = xlns16_mitch((z+precond)); 
     //$display("pre=%h post=%h mit=%h",precond,postcond,mitch);
     adjust = usedb ? /*16'hffff&*/(-mitch) : 
        (z==0) ? 1<<`xlns16_F : mitch;// + postcond;
