@@ -40,7 +40,7 @@
         z = z1;
       end*/
        oldz = z1[22] ? 0 : z1; 
-       z    = /*z1[22] ?*/ z1; : -z1;
+       z    = /*z1[22] ?*/ z1; // : -z1;
     //$display("z=%h old=%h udb=%h ",z,oldz,usedb);
     precond = (usedb==0) ? (
                             ((24'h7fffff&(-z))>>3)
