@@ -29,34 +29,27 @@
     flipsign = z2[23]&z2[22];
     usedb = z2[23];// & `xlns16_signmask;
     z1 = (z2 & `xlns16_logmask) ^ `xlns16_logsignmask;
-    /*if ((z1[22]==0))// & `xlns16_logsignmask)==0)
-      begin
-        oldz = z1;
-        z = (-z1);
-      end
-    else
-      begin
-        oldz = 0;
-        z = z1;
-      end*/
-       oldz = z1[22] ? 0 : z1; 
-       z    = z1[22] ? z1 : (24'h7fffff ^ z1);
+    negz1 = -z1;
+    oldz = z1[22] ? 0 : z1; 
+    z    = z1[22] ? z1 : negz1;
+    negz = z1[22] ? negz1 : z1;
+       
     //$display("z=%h old=%h udb=%h ",z,oldz,usedb);
     precond = (usedb==0) ? (
-                            ((24'h7fffff&(-z))>>3)
+                            ((24'h7fffff&(negz))>>3)
                            ) :          // -.125*z 
               (z < -(2<<`xlns16_F)) ? 5<<(`xlns16_F-3):        //  0.625
                               (z >> 2) + (9 << (`xlns16_F-3));//  .25*z + 9/8
 
     //$display("precond=%h",precond);
-    postcond = ((`xlns16_logmask&(-z)) >= (3<<`xlns16_F)) ? 0: 
-                (`xlns16_logmask&(-z)) <= (3<<(`xlns16_F-2)) ? 
+       postcond = ((`xlns16_logmask&(negz)) >= (3<<`xlns16_F)) ? 0: 
+                   (`xlns16_logmask&(negz)) <= (3<<(`xlns16_F-2)) ? 
                                              -(1<<(`xlns16_F-6)) : 
                                              +(1<<(`xlns16_F-6));
     //$display("postcond=%h",postcond);
        mitch = xlns16_mitch((z+precond)); 
     //$display("pre=%h post=%h mit=%h",precond,postcond,mitch);
-    adjust = usedb ? /*16'hffff&*/(-mitch) : 
+    adjust = usedb ? (-mitch) : 
        (z==0) ? 1<<`xlns16_F : mitch + postcond;
     //$display("adj=%h",adjust);
     lpvip = ((`xlns16_logmask&(-z)) > `xlns16_esszer) ? `xlns16_logsignmask + oldz:
