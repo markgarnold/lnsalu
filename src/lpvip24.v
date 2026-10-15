@@ -29,7 +29,7 @@
     flipsign = z2[23]&z2[22];
     usedb = z2[23];// & `xlns16_signmask;
     z1 = (z2 & `xlns16_logmask) ^ `xlns16_logsignmask;
-    if ((z1[22]==0))// & `xlns16_logsignmask)==0)
+    /*if ((z1[22]==0))// & `xlns16_logsignmask)==0)
       begin
         oldz = z1;
         z = (-z1);
@@ -38,7 +38,9 @@
       begin
         oldz = 0;
         z = z1;
-      end
+      end*/
+    oldz = z1[22] ? 0 : z1; 
+    z    = z1[22] ? z1 : -z1;
     //$display("z=%h old=%h udb=%h ",z,oldz,usedb);
     precond = (usedb==0) ? (
                             ((24'h7fffff&(-z))>>3)
