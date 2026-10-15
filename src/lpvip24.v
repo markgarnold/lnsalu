@@ -23,7 +23,7 @@
    begin
     if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
     begin
-      lpvip = {8'h00,lpvipsing(z2[23:8]};//lpvipsing(z2>>8)<<8;
+      lpvip = {8'h00, lpvipsing(z2[23:8]) };//lpvipsing(z2>>8)<<8;
     end
     else
      begin
