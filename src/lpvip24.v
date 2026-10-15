@@ -11,7 +11,7 @@
    end
   endfunction
       
-  //`include "lpvipsingcase.v"
+  `include "lpvipsingcase.v"
 
   function [23:0] lpvip;
    input [23:0] z2;
@@ -21,11 +21,11 @@
     reg [23:0] negz1,negz;
    reg flipsign;
    begin
-    /*if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
+    if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
     begin
-      lpvip = 0;//lpvipsing(z2>>8)<<8;
+      lpvip = {8'h00,lpvipsing(z2[23:8}};//lpvipsing(z2>>8)<<8;
     end
-    else*/
+    else
      begin
     flipsign = z2[23]&z2[22];
     usedb = z2[23];// & `xlns16_signmask;
