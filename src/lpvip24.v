@@ -11,19 +11,20 @@
    end
   endfunction
       
-  `include "lpvipsingcase.v"
+  //`include "lpvipsingcase.v"
 
   function [23:0] lpvip;
    input [23:0] z2;
    
-   reg [23:0] z1,z,usedb, precond, postcond, mitch, adjust, oldz;
+   reg [23:0] z1,z, precond, postcond, mitch, adjust, oldz;
+    reg usedb;
    reg flipsign;
    begin
     /*if ((z2[23:16]==8'b10111111)|(z2[23:16]==8'b11000000)) 
     begin
       lpvip = 0;//lpvipsing(z2>>8)<<8;
     end
-    else*/
+    else
      begin
     flipsign = z2[23]&z2[22];
     usedb = z2[23];// & `xlns16_signmask;
@@ -33,22 +34,24 @@
         oldz = z1;
         z = (-z1);
       end
-    else
+    else*/
       begin
         oldz = 0;
         z = z1;
       end
     //$display("z=%h old=%h udb=%h ",z,oldz,usedb);
-    precond = (usedb==0) ? (
+    precond = 0; /*(usedb==0) ? (
                             ((24'h7fffff&(-z))>>3)
                            ) :          // -.125*z 
               (z < -(2<<`xlns16_F)) ? 5<<(`xlns16_F-3):        //  0.625
                               (z >> 2) + (9 << (`xlns16_F-3));//  .25*z + 9/8
+*/
     //$display("precond=%h",precond);
-    postcond = ((`xlns16_logmask&(-z)) >= (3<<`xlns16_F)) ? 0: 
+    postcond = 0; /*((`xlns16_logmask&(-z)) >= (3<<`xlns16_F)) ? 0: 
                 (`xlns16_logmask&(-z)) <= (3<<(`xlns16_F-2)) ? 
                                              -(1<<(`xlns16_F-6)) : 
                                              +(1<<(`xlns16_F-6));
+*/
     //$display("postcond=%h",postcond);
     //mitch = ((`xlns16_logmask&(-z)) >= 1<<`xlns16_F)||(usedb==0) ? xlns16_mitch((z+precond)) : 
      //             -xlns16_db_ideal(-z)-z; // use ideal for singularity
