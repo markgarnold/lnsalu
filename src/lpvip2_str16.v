@@ -304,7 +304,7 @@ module add15(p, a, b, c);
   full_adder fac(cc, p[12], a[12], b[12], cb);
   full_adder fad(cd, p[13], a[13], b[13], cc);
   full_adder fae(ce, p[14], a[14], b[14], cd);
-  assign p = a + b + c;
+  //assign p = a + b + c;
 endmodule  
 
 module incrementor7(out, z, c0);
