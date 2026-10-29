@@ -395,7 +395,7 @@ module incrementor(out, z, sub_mode);
   input [`W-1:0] z;
   input sub_mode;
   output [`W-1:0] out;
-  wire c0,c1,c2,c4,c5,c6,c7;
+  wire c0,c1,c2,c3,c4,c5,c6,c7;
   wire [`W-1-`F:0] zint = z[`W-1:`F]; 
   wire [`W-1-`F:0] zintinc;
 
