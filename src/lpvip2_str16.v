@@ -69,15 +69,15 @@ module shift4(bus_out, bus_in, sel);
   mux2 mux7(bus_out[7], bus_in[7], 1'b0,      sel);
 endmodule
 
-module shift7(bus_out, bus_in, dist);
+module shift7(bus_out, bus_in, distan);
   input [`F:0] bus_in;
   output [`F:0] bus_out;
-  input [2:0] dist;
+  input [2:0] distan;
   wire [`F:0] temp;
   wire [`F:0] temp2;
-  shift1 s1(temp, bus_in, dist[0]);
-  shift2 s2(temp2, temp, dist[1]);
-  shift4 s4(bus_out, temp2, dist[2]);
+  shift1 s1(temp, bus_in, distan[0]);
+  shift2 s2(temp2, temp, distan[1]);
+  shift4 s4(bus_out, temp2, distan[2]);
 endmodule
 
 
