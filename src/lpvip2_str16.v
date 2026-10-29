@@ -326,7 +326,7 @@ module incrementor11(out, z, c0);
   input [10:0] z;
   input c0;
   output [10:0] out;
-  wire c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,ca;
+  wire c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,ca,cb;
 
   inc_half_adder inc0(c1, out[0], z[0], c0);
   inc_half_adder inc1(c2, out[1], z[1], c1);
