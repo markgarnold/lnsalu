@@ -9,22 +9,25 @@ module oldalu(r,a,b,op);
    assign r = (op==0) ? a+b : a-b;
 endmodule
 
-
+`include "lpvip2_str16.v"  //new oct28
 module ideal_sb(out_sbz, in_z, sb_mode);
   output [`SIZE-1:0] out_sbz;
   input  [`SIZE-1:0] in_z;
   input sb_mode;
+  
+  wire [`SIZE-1:0] out_lpvip;  //new oct28
+  lpvip lpvip_instance(out_lpvip, in_z); //new oct28
  
   reg [`SIZE-1:0] out_sbz; 
   //reg [`SIZE-1:0] dirsb[0:65535];
 
-  `include "lpvip.v"
-
+  //`include "lpvip.v"  comment oct 28
   //initial
      //$readmemh("dirsb_ideal.hex",dirsb);
      //$readmemh("dirsb_lpvip.hex",dirsb);
-  always @(in_z or sb_mode)
-     out_sbz = sb_mode ? lpvip(in_z) : in_z;
+  always @(in_z or sb_mode or out_lpvip)
+     out_sbz = sb_mode ? out_lpvip : in_z;  //new oct 28
+     //out_sbz = sb_mode ? lpvip(in_z) : in_z;  //comment oct 28
      //out_sbz = sb_mode ? dirsb[in_z] : in_z;
 endmodule
    
@@ -82,8 +85,6 @@ module tiny_test(ai,bi,ld,sel,alu_func,outp,clk);
      reg [`N-1:0] outp;
      newalu alu_instance(alu_out, a, b,
                        alu_func[0],alu_func[5],alu_func[6]);//op,lnsmode,sbmode
-   //oldalu alu_instance(alu_out, a, b,alu_func[0]);
-   //assign alu_out=a+b;
   `endif
 
 
