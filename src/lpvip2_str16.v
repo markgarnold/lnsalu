@@ -126,6 +126,8 @@ output [`W-1:0] sbdb_z;
 reg [`W-1:0] sbdb_z;
 always @(small_z)
 begin
+  sbdb_z=0;
+  /*
  case(small_z)
   7'h00:sbdb_z=15'h0078;
   7'h01:sbdb_z=15'h0080;
@@ -256,6 +258,7 @@ begin
   7'h7e:sbdb_z=15'h0344;
   7'h7f:sbdb_z=15'h03c3;
  endcase
+ */
 end
 endmodule
 
